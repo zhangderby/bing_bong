@@ -1,0 +1,105 @@
+title = "Pearl WCC Baseline Configuration"
+
+opds_path = "/home/derbyk/src/stp_wfe_maps/telescope/"
+coat_path = "/home/derbyk/src/stp_reference_data/coatings/"
+cam_path = "/home/derbyk/src/stp_reference_data/sensors/"
+
+use_raytrace = "True"
+
+fno = 15  
+
+[simulation] #---------------------------------------------------------------------
+beam_sampling = 512                 # pixels
+fov = 128                           # pixels
+wvl_reference = 625e-9              # meters
+bandwidth = 0.24                    # fraction of wvl_reference
+wvl_sampling = 24      
+jitter = 10e-3                      # arcsec RMS
+
+[sources] #---------------------------------------------------------------------
+magnitudes = [18, 18, 18, 18, 18]                           # Rmag
+positions = [[0, 0], [2, 5], [5, 2], [-2, -5], [-5, -2]]    # arcmin
+defocus_vals = [0, 0.5, 1, 0.5, 1]                          # waves
+
+[pupil] #---------------------------------------------------------------------
+diam = 6.42                         # meters
+diam_obscuration = 1.38             # meters
+num_supports = 3        
+support_width = 0.15                # meters
+
+[optics] #---------------------------------------------------------------------           
+
+[optics.m1]
+diam = 6.42                         # meters
+beam_size = 6.42                    # meters
+beam_walk = 0                       # fraction of beam_size
+opd_map = "M1_goal_map.fits"        
+surface_rms = 9.4e-9                # meters
+surface_psd_b = 0.1                 # cycles/meter
+surface_psd_c = 2.8                 
+coating = "NIST_1st_surface_Al.csv" 
+coating_stddev = 0.02               # ???
+temp_nominal = 20                   # Celsius
+temp_nominal_range = 1              # Kelvin
+temp_stability = 0.01               # Kelvin/hr
+
+[optics.m2]
+diam = 1.38                         # meters
+beam_size = 0.5784126987600984      # meters
+beam_walk = 0.0001648296196517078   # fraction of beam_size
+opd_map = "M2_map.fits"           
+surface_rms = 8e-9                  # meters
+surface_psd_b = 10                  # cycles/meter
+surface_psd_c = 2.65                
+coating = "NIST_1st_surface_Al.csv" 
+coating_stddev = 0.005              # ???
+temp_nominal = -35                  # Celsius
+temp_nominal_range = 20             # Kelvin    
+temp_stability = 0.05               # Kelvin/hr
+
+[optics.m3]
+width = 0.56                        # meters
+height = 0.36                       # meters
+beam_size = 0.08319464623257851     # meters
+beam_walk = 0.0069413534814011905   # fraction of beam_size
+opd_map = "M3_map.fits" 
+surface_rms = 5e-9                  # meters
+surface_psd_b = 10                  # cycles/meter
+surface_psd_c = 2.65                
+coating = "NIST_1st_surface_Al.csv"
+coating_stddev = 0.005              # ???
+temp_nominal = 10                   # Celsius
+temp_nominal_range = 10             # Kelvin
+temp_stability = 0.05               # Kelvin/hr
+
+[optics.m4]
+diam = 0.1                          # meters
+beam_size = 0.08561819              # meters
+beam_walk = 0                       # fraction of beam_size
+opd_map = "M4_map.fits"             
+surface_rms = 5e-9                  # meters
+surface_psd_b = 10                  # cycles/meter
+surface_psd_c = 2.65                
+coating = "NIST_1st_surface_Al.csv"
+coating_stddev = 0.005              # ???
+temp_nominal = 1                    # Celsius
+temp_nominal_range = 20             # Kelvin
+temp_stability = 0.05               # Kelvin/hr
+
+[detector] #---------------------------------------------------------------------
+
+exposure_time = 1                   # seconds
+black_level = 100
+gain = 100
+pixel_size = 3.76e-6                # meters
+qe = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_QE_curve.fits" 
+dark_current = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Dark_Current_vs_Sensor_Temperature.csv"
+gain_curve = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Gain_vs_Gain_Setting.csv"
+read_noise = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Read_Noise_vs_Gain_Setting.csv"
+well_depth = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Well_Depth_vs_Gain_Setting.csv"
+temp_nominal = 20                   # Celsius
+temp_nominal_range = 1              # Kelvin
+temp_stability = 0.1                # Kelvin/hr
+
+
+
